@@ -287,6 +287,15 @@ def short_name(iso3: str) -> str:
     return name.split(" (")[0]
 
 
+_NEEDS_THE = {"G163", "GBR", "USA", "NLD", "PHL", "BHS", "GMB", "CZE", "DOM", "CAF", "SVK",
+              "KGZ", "ARE", "MHL", "SLB", "MDV", "SYC", "COM"}
+
+
+def in_name(iso3: str) -> str:
+    """Country name as used mid-sentence: 'the United Kingdom', 'India'."""
+    return f"the {short_name(iso3)}" if iso3 in _NEEDS_THE else short_name(iso3)
+
+
 # ---------------------------------------------------------------------------
 # Number formatting
 # ---------------------------------------------------------------------------
@@ -728,7 +737,7 @@ follow = (
     f"({cur2} per {cur1}) {change_words(nominal_change)}, while the real index "
     f"{change_words(real_change)}. The difference between the two is inflation: "
     f"it shows how much of the currency move was offset (or amplified) by price "
-    f"changes in {short_name(c1)} versus {short_name(c2)}."
+    f"changes in {in_name(c1)} versus {in_name(c2)}."
 )
 st.markdown(
     f'<div class="reading"><p class="lead">{lead}</p><p class="follow">{follow}</p></div>',
@@ -854,7 +863,7 @@ with st.container(border=True):
 
 st.markdown(
     f'<p class="note">Reading the chart: when the <span style="color:{REAL};font-weight:600">real index</span> '
-    f"is above 100, goods in {short_name(c1)} cost more, measured in {short_name(c2)} goods, than they "
+    f"is above 100, goods in {in_name(c1)} cost more, measured in goods from {in_name(c2)}, than they "
     f"did on average over the period, so the {curname1} is strong in real terms. The "
     f'<span style="color:{NOMINAL};font-weight:600">nominal rate</span> is shown in actual currency units, '
     f"not normalized.</p>",
