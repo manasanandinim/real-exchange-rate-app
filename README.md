@@ -4,10 +4,8 @@ A Streamlit app that compares any two IMF countries (or the Euro area) in
 nominal and real terms, using monthly IMF CPI and exchange-rate data from
 January 1976 onwards.
 
-Built by Manasa Nandini Manimozhi for International Finance, Kellogg School of
-Management (Fall 2026). Code written with Claude (Anthropic), model
-`claude-opus-5-5` (Claude Opus 5.5), on 26 October 2026; prompts and economic
-checks by the author.
+Code written with Claude (Anthropic), model
+`claude-opus-5-5` (Claude Opus 5.5), on 26 October 2026.
 
 ## What it calculates
 
